@@ -23,10 +23,29 @@ namespace DataStructure
         /// </summary>
         public int Count => _size;
 
-
+        /// <summary>
+        /// 初始化
+        /// </summary>
         public List()
         {
             _capacity = 5;
+            _size = 0;
+            _buffer = new T[_capacity];
+            _equalityComparer = EqualityComparer<T>.Default;
+        }
+
+        /// <summary>
+        /// 初始化带参数容量大小
+        /// </summary>
+        /// <param name="capacity">初始化容量大小</param>
+        public List(int capacity)
+        {
+            if (capacity < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(capacity), "must > 0");
+            }
+
+            _capacity = capacity;
             _size = 0;
             _buffer = new T[_capacity];
             _equalityComparer = EqualityComparer<T>.Default;
