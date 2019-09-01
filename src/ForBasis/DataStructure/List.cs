@@ -17,7 +17,7 @@ namespace DataStructure
         public int Capacity
         {
             get => _capacity;
-            set => _capacity = value;
+            //set => _capacity = value;
         }
 
         /// <summary>
@@ -26,7 +26,6 @@ namespace DataStructure
         public int Count
         {
             get => _size;
-            set => _size = value;
         }
 
 
