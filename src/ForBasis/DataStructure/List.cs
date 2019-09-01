@@ -32,6 +32,18 @@ namespace DataStructure
             _equalityComparer = EqualityComparer<T>.Default;
         }
 
+        public T this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= _size)
+                {
+                    throw new IndexOutOfRangeException($"index must >=0 and <={_size - 1}");
+                }
+                return _buffer[index];
+            }
+            set => Insert(index, value);
+        }
         /// <summary>
         /// 添加一个数据
         /// </summary>
@@ -87,6 +99,40 @@ namespace DataStructure
             }
 
             _size--;
+        }
+
+        /// <summary>
+        /// 在特定位置插入新值
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="value"></param>
+        public void Insert(int index, T value)
+        {
+            if (index < 0 || index > _size)
+            {
+                throw new IndexOutOfRangeException($"index must >= 0 and <= {_size }");
+            }
+
+            if (_size >= _buffer.Length)
+            {
+                _capacity = _capacity * 2;
+                var oldBuffer = _buffer;
+                _buffer = new T[_capacity];
+                for (var i = 0; i < _size; i++)
+                {
+                    _buffer[i] = oldBuffer[i];
+                }
+            }
+
+            if (index != _size)
+            {
+                for (int i = _size; i > index; i--)
+                {
+                    _buffer[i] = _buffer[i - 1];
+                }
+            }
+            _buffer[index] = value;
+            _size++;
         }
 
         private int GetIndex(T value)
