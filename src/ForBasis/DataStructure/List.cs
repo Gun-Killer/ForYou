@@ -154,6 +154,15 @@ namespace DataStructure
             _size++;
         }
 
+        /// <summary>
+        /// 清空内容
+        /// </summary>
+        public void Clear()
+        {
+            _size = 0;
+            _buffer = new T[_capacity];
+        }
+
         private int GetIndex(T value)
         {
             if (_size < 1)
