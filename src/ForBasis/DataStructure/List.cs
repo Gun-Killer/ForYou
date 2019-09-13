@@ -159,8 +159,12 @@ namespace DataStructure
         /// </summary>
         public void Clear()
         {
+            for (int i = 0; i < _size; i++)
+            {
+                _buffer[i] = default(T);
+            }
             _size = 0;
-            _buffer = new T[_capacity];
+
         }
 
         private int GetIndex(T value)
