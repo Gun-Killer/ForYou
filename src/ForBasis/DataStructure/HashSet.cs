@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace DataStructure
 {
@@ -10,10 +9,11 @@ namespace DataStructure
     public class HashSet<T>
     {
         private int _size;
-        private IEqualityComparer<T> _equalityComparer;
+        private readonly IEqualityComparer<T> _equalityComparer;
         private Entity[] _buffer;
         private int[] _buckets;
-        struct Entity
+
+        private struct Entity
         {
             public T Value { get; set; }
             public int HashCode { get; set; }
@@ -36,7 +36,7 @@ namespace DataStructure
             var hashCode = value.GetHashCode() & 0x7FFFFFFF;
             var bucketIndex = hashCode % _buckets.Length;
 
-            for (var i = _buckets[bucketIndex] - 1; i > 0; i = _buffer[i].Next)
+            for (var i = _buckets[bucketIndex] - 1; i >= 0; i = _buffer[i].Next)
             {
                 if (hashCode == _buffer[i].HashCode && _equalityComparer.Equals(value, _buffer[i].Value))//已经存在
                 {
@@ -67,6 +67,66 @@ namespace DataStructure
             _size++;
             _buckets[bucketIndex] = _size;
 
+        }
+
+        /// <summary>
+        /// 移除
+        /// </summary>
+        /// <param name="value"></param>
+        public void Remove(T value)
+        {
+            var hashCode = value.GetHashCode() & 0x7FFFFFFF;
+            var bucketIndex = hashCode % _buckets.Length;
+            //var last = -1;
+            var index = -1;
+            for (var i = _buckets[bucketIndex] - 1; i >= 0; /*last = i, */i = _buffer[i].Next)
+            {
+                if (hashCode == _buffer[i].HashCode && _equalityComparer.Equals(value, _buffer[i].Value))//存在
+                {
+                    index = i;
+                    //if (last < 0)
+                    //{
+                    //    _buckets[bucketIndex] = _buffer[i].Next + 1;
+                    //}
+                    //else
+                    //{
+                    //    _buffer[last].Next = _buffer[i].Next;
+                    //}
+
+                    //_buffer[i].HashCode = -1;
+                    //_buffer[i].Value = default;
+                    //_buffer[i].Next = -1;// todo
+                    //_size--;
+                }
+            }
+
+            if (index < 0)
+            {
+                return;
+            }
+            var oldBuffer = _buffer;
+            _buffer = new Entity[oldBuffer.Length];
+            _buckets = new int[_buffer.Length];
+            var oldSize = _size;
+            _size = 0;
+            for (int i = 0; i < oldSize; i++)
+            {
+                if (index == i)
+                {
+                    continue;
+                }
+                Add(oldBuffer[i].Value);
+            }
+        }
+
+        /// <summary>
+        /// 清空
+        /// </summary>
+        public void Clear()
+        {
+            _buffer=new Entity[_buffer.Length];
+            _buckets=new int[_buffer.Length];
+            _size = 0;
         }
     }
 }
