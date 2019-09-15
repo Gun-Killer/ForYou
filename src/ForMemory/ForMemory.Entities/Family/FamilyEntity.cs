@@ -6,7 +6,7 @@ namespace ForMemory.Entities.Family
     /// <summary>
     /// 
     /// </summary>
-    public class Family: IEntity
+    public class FamilyEntity : IEntity
     {
         /// <summary>
         /// 名称

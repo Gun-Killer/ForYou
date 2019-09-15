@@ -3,7 +3,7 @@ using ForMemory.Entities.Interfaces;
 
 namespace ForMemory.Entities.Family
 {
-    public class FamilyMember : IEntity
+    public class FamilyMemberEntity : IEntity
     {
         /// <summary>
         /// 手机号
