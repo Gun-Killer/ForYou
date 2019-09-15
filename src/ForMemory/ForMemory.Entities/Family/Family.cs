@@ -1,7 +1,7 @@
 ﻿using System;
-using ForMemory.Domain.Interfaces;
+using ForMemory.Entities.Interfaces;
 
-namespace ForMemory.Domain.Family
+namespace ForMemory.Entities.Family
 {
     /// <summary>
     /// 

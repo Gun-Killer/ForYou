@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ForMemory.Domain.Interfaces
+namespace ForMemory.Entities.Interfaces
 {
     public interface IEntity
     {
