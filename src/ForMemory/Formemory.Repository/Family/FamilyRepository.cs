@@ -1,4 +1,5 @@
-﻿using ForMemory.Entities.Family;
+﻿using ForMemory.Domain.Interfaces.Repositories.Family;
+using ForMemory.Entities.Family;
 
 namespace Formemory.Repository.Family
 {

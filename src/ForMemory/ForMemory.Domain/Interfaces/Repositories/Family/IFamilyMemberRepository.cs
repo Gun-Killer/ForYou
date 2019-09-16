@@ -1,7 +1,7 @@
 ﻿using System;
 using ForMemory.Entities.Family;
 
-namespace Formemory.Repository.Family
+namespace ForMemory.Domain.Interfaces.Repositories.Family
 {
     public interface IFamilyMemberRepository
     {

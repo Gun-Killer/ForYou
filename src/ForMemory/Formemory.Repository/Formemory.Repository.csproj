@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ForMemory.Domain\ForMemory.Domain.csproj" />
     <ProjectReference Include="..\ForMemory.Entities\ForMemory.Entities.csproj" />
   </ItemGroup>
 
