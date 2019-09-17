@@ -24,17 +24,16 @@ namespace ForMemory.Server
         {
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddControllers()
-                .AddNewtonsoftJson();
+                .AddNewtonsoftJson(); 
 
+            services.AddEntityFrameworkMySql();
             services.AddDbContextPool<MyDbContext>(options =>
             {
                 options.UseMySql("Server=127.0.0.1;database=blog;uid=root;pwd=123456;Character Set=utf8mb4",
                     optionsBuilder => optionsBuilder.MigrationsAssembly("ForMemory.Server"));
             }, 64);
 
-            services.AddEntityFrameworkMySql();
 
-          
 
             services.AddScoped<IFamilyRepository, FamilyRepository>();
         }
