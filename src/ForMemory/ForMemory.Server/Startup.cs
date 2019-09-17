@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using ForMemory.Domain.Interfaces.Repositories.Family;
+using Formemory.Repository;
+using Formemory.Repository.Family;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,6 +25,18 @@ namespace ForMemory.Server
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddControllers()
                 .AddNewtonsoftJson();
+
+            services.AddDbContextPool<MyDbContext>(options =>
+            {
+                options.UseMySql("Server=127.0.0.1;database=blog;uid=root;pwd=123456;Character Set=utf8mb4",
+                    optionsBuilder => optionsBuilder.MigrationsAssembly("ForMemory.Server"));
+            }, 64);
+
+            services.AddEntityFrameworkMySql();
+
+          
+
+            services.AddScoped<IFamilyRepository, FamilyRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
