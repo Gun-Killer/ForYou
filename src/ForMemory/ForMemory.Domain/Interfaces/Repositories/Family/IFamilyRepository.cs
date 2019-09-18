@@ -8,5 +8,7 @@ namespace ForMemory.Domain.Interfaces.Repositories.Family
         void Insert(FamilyEntity entity);
 
         FamilyEntity QueryById(Guid id);
+
+        int Commit();
     }
 }

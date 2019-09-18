@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ForMemory.Dto\ForMemory.Dto.csproj" />
     <ProjectReference Include="..\ForMemory.Entities\ForMemory.Entities.csproj" />
   </ItemGroup>
 
