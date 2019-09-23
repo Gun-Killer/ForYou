@@ -6,7 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ForMemory.Domain\ForMemory.Domain.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.0.0-preview9.19423.4" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ForMemory.Domain\ForMemory.Domain.csproj" />
+  </ItemGroup> 
 
 </Project>
