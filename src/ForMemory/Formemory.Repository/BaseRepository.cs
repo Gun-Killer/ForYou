@@ -62,14 +62,14 @@ namespace Formemory.Repository
 
         public virtual async Task<int> TransactionCommitAsync(CancellationToken cancellation = default)
         {
-            using var tran = await _dbContext.Database.BeginTransactionAsync(cancellation);
+            await using var tran = await _dbContext.Database.BeginTransactionAsync(cancellation);
             try
             {
                 var result = await CommitAsync(cancellation);
                 tran.Commit();
                 return result;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 tran.Rollback();
                 return -1;
