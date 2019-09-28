@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Linq;
+using System.Threading.Tasks;
 using ForMemory.Cache.Interfaces;
 
 namespace ForMemory.Cache
@@ -51,7 +53,28 @@ namespace ForMemory.Cache
             };
             var result = _cache.AddOrUpdate(key, addValue, (t, oldValue) => addValue);
 
+            RemoveExpire();
+
             return result.Equals(addValue);
+        }
+
+
+        private void RemoveExpire()
+        {
+            if (_cache.Count < 1000)
+            {
+                return;
+            }
+            var task = new Task(() =>
+              {
+                  var expireKeys = _cache.Where(t => t.Value.ExpireTime <= DateTime.Now)
+                      .Select(t => t.Key);
+                  foreach (var key in expireKeys)
+                  {
+                      _cache.TryRemove(key, out _);
+                  }
+              });
+            task.Start();
         }
 
         private struct CacheEntity : IEquatable<CacheEntity>
