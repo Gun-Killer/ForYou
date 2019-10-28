@@ -1,4 +1,5 @@
-﻿using ForMemory.Entities.Accounting;
+﻿using ForMemory.Dto.Accounting;
+using ForMemory.Entities.Accounting;
 
 namespace ForMemory.Domain.Interfaces.Repositories.Accounting
 {
@@ -6,6 +7,7 @@ namespace ForMemory.Domain.Interfaces.Repositories.Accounting
     {
         void Insert(ExpensesRecordEntity entity);
 
+        ExpensesRecordDto[] Query(int pageIndex, int pageSize);
         int Commit();
     }
 }
