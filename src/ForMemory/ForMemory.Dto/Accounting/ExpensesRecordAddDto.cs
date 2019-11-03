@@ -11,5 +11,10 @@ namespace ForMemory.Dto.Accounting
         /// 2 expense
         /// </summary>
         public int Type { get; set; }
+
+        /// <summary>
+        ///  备注
+        /// </summary>
+        public string Remark { get; set; }
     }
 }

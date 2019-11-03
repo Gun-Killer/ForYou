@@ -26,7 +26,8 @@ namespace ForMemory.Service.Accounting
                 Amount = recordInfo.Amount,
                 Type = recordInfo.Type,
                 AccountId = recordInfo.AccountId,
-                Time = DateTime.Now
+                Time = DateTime.Now,
+                Remark = recordInfo.Remark
             });
             _expensesRecordRepository.Commit();
 
