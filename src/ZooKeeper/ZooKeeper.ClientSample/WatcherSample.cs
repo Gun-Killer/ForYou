@@ -9,7 +9,8 @@ namespace ZooKeeper.ClientSample
         /// <inheritdoc />
         public override Task process(WatchedEvent @event)
         {
-            Console.WriteLine(@event.getState());
+           
+            Console.WriteLine("数据发生变化" + @event.ToString());
             return Task.CompletedTask;
         }
     }
