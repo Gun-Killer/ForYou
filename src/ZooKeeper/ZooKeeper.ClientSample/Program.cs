@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using org.apache.zookeeper;
 
@@ -14,6 +16,7 @@ namespace ZooKeeper.ClientSample
 
             var middd = await zooKeeper.existsAsync("/root", new WatcherSample());
             if (middd != null)
+
             {
                 await zooKeeper.deleteAsync("/root");
             }
@@ -40,6 +43,27 @@ namespace ZooKeeper.ClientSample
             Console.WriteLine(zooKeeper.getChildrenAsync("/root", new WatcherSample()).Result.Children.Count);
             statts = await zooKeeper.setDataAsync(res, Encoding.UTF8.GetBytes("122"));
             Console.WriteLine(statts.getCversion());
+
+
+            PessimisticLock lLock = new PessimisticLock(zooKeeper);
+            Console.WriteLine(await lLock.GetLock("4"));
+
+            List<Task> tasks = new List<Task>(5);
+            for (int i = 0; i < 5; i++)
+            {
+                tasks.Add(new Task(() =>
+              {
+                  var lockRes = lLock.GetLock("4").Result;
+                  Console.WriteLine($"{Thread.CurrentThread.Name} get  lock {lockRes}");
+
+              }));
+            }
+
+            foreach (var task in tasks)
+            {
+                task.Start();
+            }
+            Task.WaitAll(tasks.ToArray());
 
             await Task.CompletedTask;
         }
