@@ -20,8 +20,7 @@ namespace ZooKeeper.ClientSample
             res = await zooKeeper.createAsync("/node2", Encoding.UTF8.GetBytes("1"), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
             Console.WriteLine(res);
 
-            res = await zooKeeper.createAsync("/PessimisticLock", Encoding.UTF8.GetBytes("1"), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
-            Console.WriteLine(res);
+          
 
             PessimisticLock lLock = new PessimisticLock(zooKeeper);
             Console.WriteLine(await lLock.GetLock("4"));
@@ -44,6 +43,11 @@ namespace ZooKeeper.ClientSample
                 task.Start();
             }
             Task.WaitAll(tasks.ToArray());
+
+
+            PessimisticLockV2 lockV2 = new PessimisticLockV2(zooKeeper);
+            var lockV2res = await lockV2.GetLock("111");
+            Console.WriteLine(lockV2res);
 
             await Task.CompletedTask;
         }
