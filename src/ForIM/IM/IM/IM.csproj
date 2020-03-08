@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>ForYou.ForIM</AssemblyName>
+    <PackageProjectUrl>https://github.com/Gun-Killer/ForYou</PackageProjectUrl>
+    <Copyright>https://github.com/Gun-Killer/ForYou/blob/master/LICENSE</Copyright>
+    <RepositoryUrl>https://github.com/Gun-Killer/ForYou</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\GunKiller\Desktop\Code\net\ForYou\src\ForIM\IM\IM\ForYou.ForIM.xml</DocumentationFile>
+  </PropertyGroup>
+
+
+</Project>
