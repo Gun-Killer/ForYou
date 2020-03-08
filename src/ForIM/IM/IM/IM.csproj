@@ -7,6 +7,7 @@
     <Copyright>https://github.com/Gun-Killer/ForYou/blob/master/LICENSE</Copyright>
     <RepositoryUrl>https://github.com/Gun-Killer/ForYou</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <RootNamespace>ForYou.ForIM</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

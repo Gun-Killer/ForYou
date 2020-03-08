@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ForYou.ForIM</name>
+    </assembly>
+    <members>
+        <member name="T:ForYou.ForIM.Middlewares.WebSocketMiddleware">
+            <summary>
+            /
+            </summary>
+        </member>
+        <member name="M:ForYou.ForIM.Middlewares.WebSocketMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,ForYou.ForIM.SocketHandle.SocketManager)">
+            <summary>
+            
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:ForYou.ForIM.Middlewares.WebSocketMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            处理请求
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ForYou.ForIM.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ForYou.ForIM.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>

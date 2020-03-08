@@ -1,6 +1,6 @@
 using System;
 
-namespace IM
+namespace ForYou.ForIM
 {
     public class WeatherForecast
     {
