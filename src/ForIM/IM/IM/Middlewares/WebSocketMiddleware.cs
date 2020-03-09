@@ -41,26 +41,21 @@ namespace ForYou.ForIM.Middlewares
                 {
                     var webSocket = await context.WebSockets.AcceptWebSocketAsync();
                     var buffer = new byte[4 * 1024];
-                    var socketContent = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), default);
-
-                    Console.WriteLine(Encoding.UTF8.GetString(buffer));
-
-
-
                     _socketManager.AddSocket(webSocket);
 
-
-                    foreach (var socket in _socketManager.GetAll())
+                    while (webSocket.State == WebSocketState.Open && webSocket.CloseStatus.HasValue == false)
                     {
-                        if (socket.Value.State == WebSocketState.Open)
-                        {
-                            var content = Encoding.UTF8.GetBytes(Guid.NewGuid().ToString());
-                            await socket.Value.SendAsync(new ArraySegment<byte>(content),
-                                System.Net.WebSockets.WebSocketMessageType.Text, true, default);
-                        }
+                        var socketContent = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), default);
+                        await webSocket.SendAsync(
+                            new ArraySegment<byte>(Encoding.UTF8.GetBytes($"接收内容:{Encoding.UTF8.GetString(buffer, 0, socketContent.Count)}:{Guid.NewGuid()}")),
+                            WebSocketMessageType.Text, true, default);
                     }
 
-
+                    var id = _socketManager.GetId(webSocket);
+                    if (!string.IsNullOrEmpty(id))
+                    {
+                        await _socketManager.RemoveSocket(id);
+                    }
                 }
                 else
                 {
