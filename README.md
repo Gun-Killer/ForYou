@@ -9,3 +9,4 @@
 
 # 其它
   1.zookeeper
+  2.websocket
