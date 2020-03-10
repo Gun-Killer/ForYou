@@ -8,6 +8,7 @@
     <RepositoryUrl>https://github.com/Gun-Killer/ForYou</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <RootNamespace>ForYou.ForIM</RootNamespace>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

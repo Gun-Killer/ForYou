@@ -25,9 +25,11 @@ namespace ForYou.ForIM.SocketHandle
         {
             return _socketDic.FirstOrDefault(p => p.Value == socket).Key;
         }
-        public void AddSocket(WebSocket socket)
+        public string AddSocket(WebSocket socket)
         {
-            _socketDic.TryAdd(CreateConnectionId(), socket);
+            var id = CreateConnectionId();
+            _socketDic.TryAdd(id, socket);
+            return id;
         }
 
         public async Task RemoveSocket(string id)
