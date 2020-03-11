@@ -70,5 +70,11 @@ namespace ForYou.ForIM.Services.Infrastructure
         {
             return (Key != null ? Key.GetHashCode() : 0);
         }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return Key;
+        }
     }
 }
