@@ -5,15 +5,8 @@ namespace ForYou.ForIM.Services.Infrastructure
     /// <summary>
     /// 默认缓存标识
     /// </summary>
-    public class DefaultSocketCacheKey : IEquatable<DefaultSocketCacheKey>, ISocketCacheKey
+    public struct DefaultSocketCacheKey : IEquatable<DefaultSocketCacheKey>, ISocketCacheKey
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public DefaultSocketCacheKey()
-        {
-
-        }
         /// <summary>
         /// 
         /// </summary>
@@ -25,50 +18,28 @@ namespace ForYou.ForIM.Services.Infrastructure
         /// <summary>
         /// 
         /// </summary>
-        public string Key { get; set; }
+        public string Key { get; }
 
 
         /// <inheritdoc />
         public bool Equals(DefaultSocketCacheKey other)
         {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            return string.Equals(Key, other.Key);
-        }
-
-        /// <inheritdoc />
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
-            if (obj.GetType() != this.GetType())
-            {
-                return false;
-            }
-
-            return Equals((DefaultSocketCacheKey)obj);
+            return string.Equals(other.Key, Key, StringComparison.InvariantCulture);
         }
 
         /// <inheritdoc />
         public override int GetHashCode()
         {
-            return (Key != null ? Key.GetHashCode() : 0);
+            if (Key == null)
+            {
+                return 0;
+            }
+
+            return Key.GetHashCode();//每次重启可能会不一样
+            //using var md5 = new MD5CryptoServiceProvider();
+            //var buffer = Encoding.UTF8.GetBytes(Key);
+            //var hash = md5.ComputeHash(buffer);
+            //return BitConverter.ToInt32(hash);
         }
 
         /// <inheritdoc />

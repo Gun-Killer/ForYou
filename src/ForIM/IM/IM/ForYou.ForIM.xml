@@ -29,6 +29,84 @@
             <param name="args"></param>
             <returns></returns>
         </member>
+        <member name="T:ForYou.ForIM.Services.Infrastructure.DefaultSocketCacheKey">
+            <summary>
+            默认缓存标识
+            </summary>
+        </member>
+        <member name="M:ForYou.ForIM.Services.Infrastructure.DefaultSocketCacheKey.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="P:ForYou.ForIM.Services.Infrastructure.DefaultSocketCacheKey.Key">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ForYou.ForIM.Services.Infrastructure.DefaultSocketCacheKey.Equals(ForYou.ForIM.Services.Infrastructure.DefaultSocketCacheKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForYou.ForIM.Services.Infrastructure.DefaultSocketCacheKey.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:ForYou.ForIM.Services.Infrastructure.DefaultSocketCacheKey.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:ForYou.ForIM.Services.Infrastructure.ISocketCacheKey">
+            <summary>
+            保存socket连接唯一标识
+            </summary>
+        </member>
+        <member name="T:ForYou.ForIM.Services.IWebSocketManager">
+            <summary>
+            socket 连接管理
+            </summary>
+        </member>
+        <member name="M:ForYou.ForIM.Services.IWebSocketManager.Add(System.Net.WebSockets.WebSocket)">
+            <summary>
+            添加
+            </summary>
+            <param name="webSocket"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ForYou.ForIM.Services.IWebSocketManager.Get(ForYou.ForIM.Services.Infrastructure.ISocketCacheKey)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ForYou.ForIM.Services.IWebSocketManager.GetKey(System.Net.WebSockets.WebSocket)">
+            <summary>
+            
+            </summary>
+            <param name="webSocket"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ForYou.ForIM.Services.IWebSocketManager.Remove(ForYou.ForIM.Services.Infrastructure.ISocketCacheKey)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ForYou.ForIM.Services.WebSocketManager">
+            <inheritdoc />
+        </member>
+        <member name="M:ForYou.ForIM.Services.WebSocketManager.Add(System.Net.WebSockets.WebSocket)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForYou.ForIM.Services.WebSocketManager.Get(ForYou.ForIM.Services.Infrastructure.ISocketCacheKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForYou.ForIM.Services.WebSocketManager.GetKey(System.Net.WebSockets.WebSocket)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForYou.ForIM.Services.WebSocketManager.Remove(ForYou.ForIM.Services.Infrastructure.ISocketCacheKey)">
+            <inheritdoc />
+        </member>
         <member name="M:ForYou.ForIM.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
             <summary>
             
