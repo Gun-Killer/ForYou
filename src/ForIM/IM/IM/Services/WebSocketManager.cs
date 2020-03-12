@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Net.WebSockets;
+using System.Threading.Tasks;
 using ForYou.ForIM.Services.Infrastructure;
 
 namespace ForYou.ForIM.Services
@@ -34,12 +35,13 @@ namespace ForYou.ForIM.Services
         }
 
         /// <inheritdoc />
-        public bool Remove(ISocketCacheKey key)
+        public async Task<bool> Remove(ISocketCacheKey key)
         {
             var result = _keySocket.TryRemove(key, out var socket);
             if (result)
             {
                 _socketKey.TryGetValue(socket, out _);
+                await socket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Close", default);
             } 
             return result;
         }
