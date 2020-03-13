@@ -1,4 +1,5 @@
-﻿using System.Net.WebSockets;
+﻿using System.Collections.Generic;
+using System.Net.WebSockets;
 using System.Threading.Tasks;
 using ForYou.ForIM.Services.Infrastructure;
 
@@ -36,5 +37,11 @@ namespace ForYou.ForIM.Services
         /// <param name="key"></param>
         /// <returns></returns>
         Task<bool> Remove(ISocketCacheKey key);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<KeyValuePair<ISocketCacheKey, WebSocket>> GetAll();
     }
 }

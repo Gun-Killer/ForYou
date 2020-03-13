@@ -9,11 +9,10 @@
             /
             </summary>
         </member>
-        <member name="M:ForYou.ForIM.Middlewares.WebSocketMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,ForYou.ForIM.SocketHandle.SocketManager)">
+        <member name="M:ForYou.ForIM.Middlewares.WebSocketMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,ForYou.ForIM.Services.IWebSocketManager)">
             <summary>
             
-            </summary>
-            <param name="next"></param>
+            </summary> >
         </member>
         <member name="M:ForYou.ForIM.Middlewares.WebSocketMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
             <summary>
@@ -92,6 +91,12 @@
             <param name="key"></param>
             <returns></returns>
         </member>
+        <member name="M:ForYou.ForIM.Services.IWebSocketManager.GetAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ForYou.ForIM.Services.WebSocketManager">
             <inheritdoc />
         </member>
@@ -105,6 +110,9 @@
             <inheritdoc />
         </member>
         <member name="M:ForYou.ForIM.Services.WebSocketManager.Remove(ForYou.ForIM.Services.Infrastructure.ISocketCacheKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:ForYou.ForIM.Services.WebSocketManager.GetAll">
             <inheritdoc />
         </member>
         <member name="M:ForYou.ForIM.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">

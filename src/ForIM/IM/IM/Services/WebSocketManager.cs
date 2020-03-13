@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Net.WebSockets;
 using System.Threading.Tasks;
 using ForYou.ForIM.Services.Infrastructure;
@@ -44,6 +45,12 @@ namespace ForYou.ForIM.Services
                 await socket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Close", default);
             } 
             return result;
+        }
+
+        /// <inheritdoc />
+        public IEnumerable<KeyValuePair<ISocketCacheKey, WebSocket>> GetAll()
+        {
+            return _keySocket;
         }
     }
 }

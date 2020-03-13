@@ -1,6 +1,6 @@
 using System;
 using ForYou.ForIM.Middlewares;
-using ForYou.ForIM.SocketHandle;
+using ForYou.ForIM.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,7 +22,7 @@ namespace ForYou.ForIM
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<SocketManager>();
+            services.AddSingleton<IWebSocketManager, WebSocketManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

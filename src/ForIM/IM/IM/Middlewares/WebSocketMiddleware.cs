@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Net.WebSockets;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using ForYou.ForIM.SocketHandle;
+using ForYou.ForIM.Services;
 using Microsoft.AspNetCore.Http;
 
 namespace ForYou.ForIM.Middlewares
@@ -16,16 +15,15 @@ namespace ForYou.ForIM.Middlewares
     public class WebSocketMiddleware
     {
         private readonly RequestDelegate _next;
-        private SocketManager _socketManager;
+        private readonly IWebSocketManager _webSocketManager;
 
         /// <summary>
         /// 
-        /// </summary>
-        /// <param name="next"></param>
-        public WebSocketMiddleware(RequestDelegate next, SocketManager socketManager)
+        /// </summary> >
+        public WebSocketMiddleware(RequestDelegate next, IWebSocketManager webSocketManager)
         {
             _next = next;
-            _socketManager = socketManager;
+            _webSocketManager = webSocketManager;
         }
 
         /// <summary>
@@ -43,16 +41,14 @@ namespace ForYou.ForIM.Middlewares
                     var buffer = new byte[4 * 1024];
 
                     await SendMessageAsync("新人加入");
-                    var id = _socketManager.AddSocket(webSocket);
+                    var id = _webSocketManager.Add(webSocket);
                     while (webSocket.State == WebSocketState.Open && webSocket.CloseStatus.HasValue == false)
                     {
                         var socketContent = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), default);
                         await SendMessageAsync($"send people:{webSocket.GetHashCode()}.receive content:{Encoding.UTF8.GetString(buffer, 0, socketContent.Count)}.send content:{Guid.NewGuid().ToString()}");
                     }
-                    if (!string.IsNullOrEmpty(id))
-                    {
-                        await _socketManager.RemoveSocket(id);
-                    }
+
+                    await _webSocketManager.Remove(id);
                 }
                 else
                 {
@@ -67,7 +63,7 @@ namespace ForYou.ForIM.Middlewares
         private async Task SendMessageAsync(string msg)
         {
             var mid = Encoding.UTF8.GetBytes(msg);
-            foreach (var webSocket in _socketManager.GetAll())
+            foreach (var webSocket in _webSocketManager.GetAll())
             {
                 await webSocket.Value.SendAsync(new ArraySegment<byte>(mid), WebSocketMessageType.Text, true, default);
             }
