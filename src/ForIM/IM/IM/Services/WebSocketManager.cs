@@ -41,7 +41,7 @@ namespace ForYou.ForIM.Services
             var result = _keySocket.TryRemove(key, out var socket);
             if (result)
             {
-                _socketKey.TryGetValue(socket, out _);
+                _socketKey.TryRemove(socket, out _);
                 await socket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Close", default);
             } 
             return result;
