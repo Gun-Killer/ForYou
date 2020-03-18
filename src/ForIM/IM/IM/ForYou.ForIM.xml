@@ -14,11 +14,10 @@
             
             </summary> >
         </member>
-        <member name="M:ForYou.ForIM.Middlewares.WebSocketMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+        <member name="M:ForYou.ForIM.Middlewares.WebSocketMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext,ForYou.ForIM.Services.IMessageService)">
             <summary>
             处理请求
             </summary>
-            <param name="context"></param>
             <returns></returns>
         </member>
         <member name="M:ForYou.ForIM.Program.CreateHostBuilder(System.String[])">
@@ -26,6 +25,18 @@
             
             </summary>
             <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ForYou.ForIM.Services.IMessageService">
+            <summary>
+            处理消息
+            </summary>
+        </member>
+        <member name="M:ForYou.ForIM.Services.IMessageService.ReadMessageAsync(System.Net.WebSockets.WebSocket)">
+            <summary>
+            
+            </summary>
+            <param name="socket"></param>
             <returns></returns>
         </member>
         <member name="T:ForYou.ForIM.Services.Infrastructure.DefaultSocketCacheKey">
@@ -52,6 +63,61 @@
         </member>
         <member name="M:ForYou.ForIM.Services.Infrastructure.DefaultSocketCacheKey.ToString">
             <inheritdoc />
+        </member>
+        <member name="T:ForYou.ForIM.Services.Infrastructure.DefaultSocketMessage">
+            <inheritdoc />
+        </member>
+        <member name="P:ForYou.ForIM.Services.Infrastructure.DefaultSocketMessage.Id">
+            <inheritdoc />
+        </member>
+        <member name="P:ForYou.ForIM.Services.Infrastructure.DefaultSocketMessage.Type">
+            <inheritdoc />
+        </member>
+        <member name="P:ForYou.ForIM.Services.Infrastructure.DefaultSocketMessage.Content">
+            <inheritdoc />
+        </member>
+        <member name="P:ForYou.ForIM.Services.Infrastructure.DefaultSocketMessage.MediaId">
+            <inheritdoc />
+        </member>
+        <member name="T:ForYou.ForIM.Services.Infrastructure.IMessage">
+            <summary>
+            消息格式
+            </summary>
+        </member>
+        <member name="P:ForYou.ForIM.Services.Infrastructure.IMessage.Id">
+            <summary>
+            消息唯一标识
+            </summary>
+        </member>
+        <member name="P:ForYou.ForIM.Services.Infrastructure.IMessage.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:ForYou.ForIM.Services.Infrastructure.IMessage.Content">
+            <summary>
+            文本内容
+            </summary>
+        </member>
+        <member name="P:ForYou.ForIM.Services.Infrastructure.IMessage.MediaId">
+            <summary>
+            媒体Id
+            </summary>
+        </member>
+        <member name="T:ForYou.ForIM.Services.Infrastructure.MessageType">
+            <summary>
+            消息类型
+            </summary>
+        </member>
+        <member name="F:ForYou.ForIM.Services.Infrastructure.MessageType.Text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="F:ForYou.ForIM.Services.Infrastructure.MessageType.Image">
+            <summary>
+            图文
+            </summary>
         </member>
         <member name="T:ForYou.ForIM.Services.Infrastructure.ISocketCacheKey">
             <summary>
@@ -96,6 +162,12 @@
             
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:ForYou.ForIM.Services.MessageService">
+            <inheritdoc />
+        </member>
+        <member name="M:ForYou.ForIM.Services.MessageService.ReadMessageAsync(System.Net.WebSockets.WebSocket)">
+            <inheritdoc />
         </member>
         <member name="T:ForYou.ForIM.Services.WebSocketManager">
             <inheritdoc />

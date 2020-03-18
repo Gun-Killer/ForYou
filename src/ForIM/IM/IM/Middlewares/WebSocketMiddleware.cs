@@ -29,23 +29,24 @@ namespace ForYou.ForIM.Middlewares
         /// <summary>
         /// 处理请求
         /// </summary>
-        /// <param name="context"></param>
         /// <returns></returns>
-        public async Task Invoke(HttpContext context)
+        public async Task Invoke(HttpContext context, IMessageService messageService)
         {
             if (context.Request.Path == "/ws")
             {
                 if (context.WebSockets.IsWebSocketRequest)
                 {
                     var webSocket = await context.WebSockets.AcceptWebSocketAsync();
-                    var buffer = new byte[4 * 1024];
 
                     await SendMessageAsync("新人加入");
                     var id = _webSocketManager.Add(webSocket);
                     while (webSocket.State == WebSocketState.Open && webSocket.CloseStatus.HasValue == false)
                     {
-                        var socketContent = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), default);
-                        await SendMessageAsync($"send people:{webSocket.GetHashCode()}.receive content:{Encoding.UTF8.GetString(buffer, 0, socketContent.Count)}.send content:{Guid.NewGuid().ToString()}");
+                        var message = await messageService.ReadMessageAsync(webSocket);
+                        if (message != null)
+                        {
+                            await SendMessageAsync($"send people:{webSocket.GetHashCode()}.receive content:{message.Content}.send content:{Guid.NewGuid().ToString()}");
+                        }
                     }
 
                     await _webSocketManager.Remove(id);

@@ -23,6 +23,7 @@ namespace ForYou.ForIM
         {
             services.AddControllers();
             services.AddSingleton<IWebSocketManager, WebSocketManager>();
+            services.AddScoped<IMessageService, MessageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

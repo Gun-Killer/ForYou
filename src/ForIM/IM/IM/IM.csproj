@@ -15,5 +15,9 @@
     <DocumentationFile>C:\Users\GunKiller\Desktop\Code\net\ForYou\src\ForIM\IM\IM\ForYou.ForIM.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
 
 </Project>
