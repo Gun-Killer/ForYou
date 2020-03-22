@@ -38,6 +38,10 @@ namespace ForYou.ForIM.Middlewares
                 {
                     var webSocket = await context.WebSockets.AcceptWebSocketAsync();
 
+
+                    var receiver = new WebSocketReceiver(webSocket, _webSocketManager, messageService);
+                    await receiver.StartListening();
+
                     await SendMessageAsync("新人加入");
                     var id = _webSocketManager.Add(webSocket);
                     while (webSocket.State == WebSocketState.Open && webSocket.CloseStatus.HasValue == false)
