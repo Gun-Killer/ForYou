@@ -37,21 +37,17 @@ namespace ForYou.ForIM.Middlewares
                 if (context.WebSockets.IsWebSocketRequest)
                 {
                     var webSocket = await context.WebSockets.AcceptWebSocketAsync();
+                    await SendMessageAsync("新人加入");
+                    var id = _webSocketManager.Add(webSocket);
 
 
                     var receiver = new WebSocketReceiver(webSocket, _webSocketManager, messageService);
-                    await receiver.StartListening();
-
-                    await SendMessageAsync("新人加入");
-                    var id = _webSocketManager.Add(webSocket);
-                    while (webSocket.State == WebSocketState.Open && webSocket.CloseStatus.HasValue == false)
+                    receiver.OnMessageReceived += async (obj, e) =>
                     {
-                        var message = await messageService.ReadMessageAsync(webSocket);
-                        if (message != null)
-                        {
-                            await SendMessageAsync($"send people:{webSocket.GetHashCode()}.receive content:{message.Content}.send content:{Guid.NewGuid().ToString()}");
-                        }
-                    }
+                        await SendMessageAsync(msg: $"send people:{webSocket.GetHashCode()}.receive content:{e.Message.Content}.send content:{Guid.NewGuid()}");
+                    };
+                    await receiver.StartListening();
+                  
 
                     await _webSocketManager.Remove(id);
                 }

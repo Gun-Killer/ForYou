@@ -187,6 +187,78 @@
         <member name="M:ForYou.ForIM.Services.WebSocketManager.GetAll">
             <inheritdoc />
         </member>
+        <member name="T:ForYou.ForIM.Services.WebSocketReceiver">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ForYou.ForIM.Services.WebSocketReceiver.#ctor(System.Net.WebSockets.WebSocket,ForYou.ForIM.Services.IWebSocketManager,ForYou.ForIM.Services.IMessageService)">
+            <summary>
+            
+            </summary>
+            <param name="socket"></param>
+            <param name="manager"></param>
+            <param name="messageService"></param>
+        </member>
+        <member name="M:ForYou.ForIM.Services.WebSocketReceiver.StartListening">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:ForYou.ForIM.Services.WebSocketReceiver.OnMessageReceived">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ForYou.ForIM.Services.MessageReceiveEventArgs">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ForYou.ForIM.Services.MessageReceiveEventArgs.#ctor(ForYou.ForIM.Services.Infrastructure.IMessage)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="P:ForYou.ForIM.Services.MessageReceiveEventArgs.Message">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:ForYou.ForIM.Services.MessageEventHandler`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:ForYou.ForIM.Services.MessageEventHandler`1.op_Addition(ForYou.ForIM.Services.MessageEventHandler{`0},System.Func{System.Object,`0,System.Threading.Tasks.ValueTask})">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+            <param name="callback"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:ForYou.ForIM.Services.MessageEventHandler`1.op_Subtraction(ForYou.ForIM.Services.MessageEventHandler{`0},System.Func{System.Object,`0,System.Threading.Tasks.ValueTask})">
+            <summary>
+            
+            </summary>
+            <param name="e"></param>
+            <param name="callback"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:ForYou.ForIM.Services.MessageEventHandler`1.InvokeAsync(System.Object,`0)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="eventArgs"></param>
+            <returns></returns>
+        </member>
         <member name="M:ForYou.ForIM.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
             <summary>
             
