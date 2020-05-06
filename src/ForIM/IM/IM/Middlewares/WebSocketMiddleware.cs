@@ -65,7 +65,7 @@ namespace ForYou.ForIM.Middlewares
             await _next.Invoke(context);
         }
 
-        private async Task SendMessageAsync(string msg)
+        private async ValueTask SendMessageAsync(string msg)
         {
             var mid = Encoding.UTF8.GetBytes(msg);
             foreach (var webSocket in _webSocketManager.GetAll())

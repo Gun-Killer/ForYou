@@ -36,7 +36,7 @@ namespace ForYou.ForIM.Services
         }
 
         /// <inheritdoc />
-        public async Task<bool> Remove(ISocketCacheKey key)
+        public async ValueTask<bool> Remove(ISocketCacheKey key)
         {
             var result = _keySocket.TryRemove(key, out var socket);
             if (result)

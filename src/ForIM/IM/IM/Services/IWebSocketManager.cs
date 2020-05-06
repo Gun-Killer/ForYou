@@ -36,7 +36,7 @@ namespace ForYou.ForIM.Services
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        Task<bool> Remove(ISocketCacheKey key);
+        ValueTask<bool> Remove(ISocketCacheKey key);
 
         /// <summary>
         /// 
