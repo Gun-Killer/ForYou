@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net.WebSockets;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace ForYou.ForIM.Services
     /// <summary>
     /// 
     /// </summary>
-    public class WebSocketReceiver 
+    public class WebSocketReceiver
     {
         private readonly WebSocket _socket;
         private readonly IWebSocketManager _manager;
@@ -55,7 +56,59 @@ namespace ForYou.ForIM.Services
         /// </summary>
         public MessageEventHandler<MessageReceiveEventArgs> OnMessageReceived;
 
-       
+        #region static
+
+        private static ConcurrentDictionary<WebSocket, WebSocketReceiver> _receivers = new ConcurrentDictionary<WebSocket, WebSocketReceiver>();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="socket"></param>
+        /// <param name="receiver"></param>
+        public static void BindSocketReceiver(WebSocket socket, WebSocketReceiver receiver)
+        {
+            if (socket == null)
+            {
+                throw new ArgumentNullException(nameof(socket));
+            }
+
+            if (receiver == null)
+            {
+                throw new ArgumentNullException(nameof(receiver));
+            }
+
+            _receivers.TryAdd(socket, receiver);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="socket"></param>
+        /// <returns></returns>
+        public static WebSocketReceiver GetReceiver(WebSocket socket)
+        {
+            if (socket == null)
+            {
+                throw new ArgumentNullException(nameof(socket));
+            }
+
+            if (_receivers.TryGetValue(socket, out var receiver))
+            {
+                return receiver;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// /
+        /// </summary>
+        /// <param name="socket"></param>
+        public static void Unbind(WebSocket socket)
+        {
+            _receivers.TryRemove(socket, out _);
+        }
+        #endregion
     }
 
     /// <summary>
