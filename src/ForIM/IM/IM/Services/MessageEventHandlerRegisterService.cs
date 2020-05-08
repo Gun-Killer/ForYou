@@ -7,7 +7,7 @@ namespace ForYou.ForIM.Services
     /// <inheritdoc />
     public class MessageEventHandlerRegisterService : IMessageEventHandlerRegisterService
     {
-        private IWebSocketManager _socketManager;
+        private readonly IWebSocketManager _socketManager;
 
         /// <summary>
         /// 

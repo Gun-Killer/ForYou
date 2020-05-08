@@ -58,7 +58,7 @@ namespace ForYou.ForIM.Services
 
         #region static
 
-        private static ConcurrentDictionary<WebSocket, WebSocketReceiver> _receivers = new ConcurrentDictionary<WebSocket, WebSocketReceiver>();
+        private static readonly ConcurrentDictionary<WebSocket, WebSocketReceiver> _receivers = new ConcurrentDictionary<WebSocket, WebSocketReceiver>();
 
         /// <summary>
         /// 
