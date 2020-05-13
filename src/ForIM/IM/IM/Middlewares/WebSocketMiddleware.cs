@@ -42,12 +42,12 @@ namespace ForYou.ForIM.Middlewares
 
 
                     var receiver = new WebSocketReceiver(webSocket, _webSocketManager, messageService);
-                    receiver.OnMessageReceived += async (obj, e) =>
+                    receiver.MessageHandler += async (obj, e) =>
                     {
                         await SendMessageAsync(msg: $"send people:{webSocket.GetHashCode()}.receive content:{e.Message.Content}.send content:{Guid.NewGuid()}");
                     };
                     await receiver.StartListening();
-                  
+
 
                     await _webSocketManager.Remove(id);
                 }
@@ -66,7 +66,27 @@ namespace ForYou.ForIM.Middlewares
             var mid = Encoding.UTF8.GetBytes(msg);
             foreach (var webSocket in _webSocketManager.GetAll())
             {
-                await webSocket.Value.SendAsync(new ArraySegment<byte>(mid), WebSocketMessageType.Text, true, default);
+                if (webSocket.Value.State != WebSocketState.Open || webSocket.Value.CloseStatus.HasValue)
+                {
+                    await _webSocketManager.Remove(webSocket.Key);
+                    continue;
+                }
+
+                try
+                {
+                    await webSocket.Value.SendAsync(new ArraySegment<byte>(mid), WebSocketMessageType.Text, true,
+                        default);
+                }
+                catch (ObjectDisposedException e)
+                {
+                    await _webSocketManager.Remove(webSocket.Key);
+                   continue;
+                }
+                catch
+                {
+                    //
+                }
+                
             }
         }
     }

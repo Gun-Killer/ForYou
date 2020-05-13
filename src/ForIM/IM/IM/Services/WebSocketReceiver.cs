@@ -38,15 +38,19 @@ namespace ForYou.ForIM.Services
             while (_socket.State == WebSocketState.Open && _socket.CloseStatus.HasValue == false)
             {
                 var message = await _messageService.ReadMessageAsync(_socket);
-                if (message != null && OnMessageReceived != null)
+                if (message != null && MessageHandler != null)
                 {
-                    //OnMessageReceived.BeginInvoke(_socket, new MessageReceiveEventArgs(message), (result) =>
-                    //{
-                    //    var handler = result.AsyncState as EventHandler<MessageReceiveEventArgs>;
-                    //    handler?.EndInvoke(result);
-                    //}, OnMessageReceived);
+                    //var asyncResult = MessageHandler.BeginInvoke(_socket, new MessageReceiveEventArgs(message), (result) =>
+                    //  {
+                    //      var handler = result.AsyncState as EventHandler<MessageReceiveEventArgs>;
+                    //      handler?.EndInvoke(result);
+                    //  }, MessageHandler);
+                    await Task.Run(() =>
+                      {
+                          MessageHandler(this, new MessageReceiveEventArgs(message));
+                      }).ConfigureAwait(false);
 
-                    await OnMessageReceived.InvokeAsync(this, new MessageReceiveEventArgs(message));
+                    //await OnMessageReceived.InvokeAsync(this, new MessageReceiveEventArgs(message));
                 }
             }
         }
@@ -55,6 +59,12 @@ namespace ForYou.ForIM.Services
         /// 
         /// </summary>
         public MessageEventHandler<MessageReceiveEventArgs> OnMessageReceived;
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event EventHandler<MessageReceiveEventArgs> MessageHandler;
 
         #region static
 

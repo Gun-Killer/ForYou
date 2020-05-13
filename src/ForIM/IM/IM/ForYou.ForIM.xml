@@ -27,6 +27,40 @@
             <param name="args"></param>
             <returns></returns>
         </member>
+        <member name="T:ForYou.ForIM.Services.IMessageEventHandlerRegisterService">
+            <summary>
+            注册处理消息事件
+            </summary>
+        </member>
+        <member name="M:ForYou.ForIM.Services.IMessageEventHandlerRegisterService.Register(ForYou.ForIM.Services.Infrastructure.ISocketCacheKey,System.Func{System.Object,ForYou.ForIM.Services.MessageReceiveEventArgs,System.Threading.Tasks.ValueTask})">
+            <summary>
+            添加事件
+            </summary>
+            <param name="key"></param>
+            <param name="handler"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ForYou.ForIM.Services.IMessageEventHandlerRegisterService.Remove(ForYou.ForIM.Services.Infrastructure.ISocketCacheKey,System.Func{System.Object,ForYou.ForIM.Services.MessageReceiveEventArgs,System.Threading.Tasks.ValueTask})">
+            <summary>
+            移除处理事件
+            </summary>
+            <param name="key"></param>
+            <param name="handler"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ForYou.ForIM.Services.IMessageSendService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ForYou.ForIM.Services.IMessageSendService.Send(ForYou.ForIM.Services.Infrastructure.ISocketCacheKey,ForYou.ForIM.Services.Infrastructure.IMessage)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
         <member name="T:ForYou.ForIM.Services.IMessageService">
             <summary>
             处理消息
@@ -163,6 +197,33 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:ForYou.ForIM.Services.MessageEventHandlerRegisterService">
+            <inheritdoc />
+        </member>
+        <member name="M:ForYou.ForIM.Services.MessageEventHandlerRegisterService.#ctor(ForYou.ForIM.Services.IWebSocketManager)">
+            <summary>
+            
+            </summary>
+            <param name="socketManager"></param>
+        </member>
+        <member name="M:ForYou.ForIM.Services.MessageEventHandlerRegisterService.Register(ForYou.ForIM.Services.Infrastructure.ISocketCacheKey,System.Func{System.Object,ForYou.ForIM.Services.MessageReceiveEventArgs,System.Threading.Tasks.ValueTask})">
+            <inheritdoc />
+        </member>
+        <member name="M:ForYou.ForIM.Services.MessageEventHandlerRegisterService.Remove(ForYou.ForIM.Services.Infrastructure.ISocketCacheKey,System.Func{System.Object,ForYou.ForIM.Services.MessageReceiveEventArgs,System.Threading.Tasks.ValueTask})">
+            <inheritdoc />
+        </member>
+        <member name="T:ForYou.ForIM.Services.MessageSendService">
+            <inheritdoc />
+        </member>
+        <member name="M:ForYou.ForIM.Services.MessageSendService.#ctor(ForYou.ForIM.Services.IWebSocketManager)">
+            <summary>
+            
+            </summary>
+            <param name="socketManager"></param>
+        </member>
+        <member name="M:ForYou.ForIM.Services.MessageSendService.Send(ForYou.ForIM.Services.Infrastructure.ISocketCacheKey,ForYou.ForIM.Services.Infrastructure.IMessage)">
+            <inheritdoc />
+        </member>
         <member name="T:ForYou.ForIM.Services.MessageService">
             <inheritdoc />
         </member>
@@ -210,6 +271,31 @@
             <summary>
             
             </summary>
+        </member>
+        <member name="E:ForYou.ForIM.Services.WebSocketReceiver.MessageHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ForYou.ForIM.Services.WebSocketReceiver.BindSocketReceiver(System.Net.WebSockets.WebSocket,ForYou.ForIM.Services.WebSocketReceiver)">
+            <summary>
+            
+            </summary>
+            <param name="socket"></param>
+            <param name="receiver"></param>
+        </member>
+        <member name="M:ForYou.ForIM.Services.WebSocketReceiver.GetReceiver(System.Net.WebSockets.WebSocket)">
+            <summary>
+            
+            </summary>
+            <param name="socket"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ForYou.ForIM.Services.WebSocketReceiver.Unbind(System.Net.WebSockets.WebSocket)">
+            <summary>
+            /
+            </summary>
+            <param name="socket"></param>
         </member>
         <member name="T:ForYou.ForIM.Services.MessageReceiveEventArgs">
             <summary>

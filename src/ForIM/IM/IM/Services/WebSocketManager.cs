@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net.WebSockets;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using ForYou.ForIM.Services.Infrastructure;
 
@@ -50,7 +52,7 @@ namespace ForYou.ForIM.Services
         /// <inheritdoc />
         public IEnumerable<KeyValuePair<ISocketCacheKey, WebSocket>> GetAll()
         {
-            return _keySocket;
+            return _keySocket.ToArray();
         }
     }
 }
