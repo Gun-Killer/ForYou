@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using ForYou.ForIM.Services.Infrastructure;
 
 namespace ForYou.ForIM.Services
@@ -19,7 +18,7 @@ namespace ForYou.ForIM.Services
         }
 
         /// <inheritdoc />
-        public bool Register(ISocketCacheKey key, Func<object, MessageReceiveEventArgs, ValueTask> handler)
+        public bool Register(ISocketCacheKey key, EventHandler<MessageReceiveEventArgs> handler)
         {
             if (handler == null)
             {
@@ -37,12 +36,12 @@ namespace ForYou.ForIM.Services
             {
                 return false;
             }
-            receiver.OnMessageReceived += handler;
+            receiver.MessageHandler += handler;
             return true;
         }
 
         /// <inheritdoc />
-        public bool Remove(ISocketCacheKey key, Func<object, MessageReceiveEventArgs, ValueTask> handler)
+        public bool Remove(ISocketCacheKey key, EventHandler<MessageReceiveEventArgs> handler)
         {
             if (handler == null)
             {
@@ -61,7 +60,7 @@ namespace ForYou.ForIM.Services
                 return false;
             }
 
-            receiver.OnMessageReceived -= handler;
+            receiver.MessageHandler -= handler;
             return true;
         }
     }

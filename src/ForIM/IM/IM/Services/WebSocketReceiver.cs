@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Net.WebSockets;
 using System.Threading.Tasks;
 using ForYou.ForIM.Services.Infrastructure;
@@ -40,25 +39,16 @@ namespace ForYou.ForIM.Services
                 var message = await _messageService.ReadMessageAsync(_socket);
                 if (message != null && MessageHandler != null)
                 {
-                    //var asyncResult = MessageHandler.BeginInvoke(_socket, new MessageReceiveEventArgs(message), (result) =>
-                    //  {
-                    //      var handler = result.AsyncState as EventHandler<MessageReceiveEventArgs>;
-                    //      handler?.EndInvoke(result);
-                    //  }, MessageHandler);
+
                     await Task.Run(() =>
                       {
                           MessageHandler(this, new MessageReceiveEventArgs(message));
                       }).ConfigureAwait(false);
 
-                    //await OnMessageReceived.InvokeAsync(this, new MessageReceiveEventArgs(message));
+
                 }
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public MessageEventHandler<MessageReceiveEventArgs> OnMessageReceived;
 
 
         /// <summary>
@@ -139,96 +129,5 @@ namespace ForYou.ForIM.Services
         /// 
         /// </summary>
         public IMessage Message { get; set; }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class MessageEventHandler<T> where T : EventArgs
-    {
-        private readonly List<Func<object, T, ValueTask>> _funcs;
-        private readonly object _obj;
-        private MessageEventHandler()
-        {
-            _funcs = new List<Func<object, T, ValueTask>>();
-            _obj = new object();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="e"></param>
-        /// <param name="callback"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        public static MessageEventHandler<T> operator +(
-            MessageEventHandler<T> e, Func<object, T, ValueTask> callback)
-        {
-            if (callback == null)
-            {
-                throw new ArgumentNullException(nameof(callback));
-            }
-
-            if (e == null)
-            {
-                e = new MessageEventHandler<T>();
-            }
-
-            lock (e._obj)
-            {
-                e._funcs.Add(callback);
-            }
-
-            return e;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="e"></param>
-        /// <param name="callback"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        public static MessageEventHandler<T> operator -(
-            MessageEventHandler<T> e, Func<object, T, ValueTask> callback)
-        {
-            if (callback == null)
-            {
-                throw new ArgumentNullException(nameof(callback));
-            }
-
-            if (e == null)
-            {
-                return null;
-            }
-
-            lock (e._obj)
-            {
-                e._funcs.Remove(callback);
-            }
-
-            return e;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="eventArgs"></param>
-        /// <returns></returns>
-        public async ValueTask InvokeAsync(object sender, T eventArgs)
-        {
-            List<Func<object, T, ValueTask>> funcs;
-            lock (_obj)
-            {
-                funcs = new List<Func<object, T, ValueTask>>(_funcs);
-            }
-
-            foreach (var callback in funcs)
-            {
-                await callback(sender, eventArgs);
-            }
-        }
     }
 }
