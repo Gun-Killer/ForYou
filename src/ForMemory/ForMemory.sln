@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{14F228A6-2C4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForMemory.Server", "ForMemory.Server\ForMemory.Server.csproj", "{4756D24F-957B-4AF9-B8E5-680B2218CDD7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Formemory.Repository", "Formemory.Repository\Formemory.Repository.csproj", "{673CB423-9885-45C0-AA3B-491FB20261EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForMemory.Repository", "Formemory.Repository\ForMemory.Repository.csproj", "{673CB423-9885-45C0-AA3B-491FB20261EE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForMemory.Service", "ForMemory.Service\ForMemory.Service.csproj", "{A1CB9E89-C53F-4568-84B0-59280C36D42E}"
 EndProject
@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Queue", "Queue", "{58ECACF4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K8S", "K8S", "{F9689906-D998-4F6C-BBCA-6D437C32B0C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForMemory.Cache", "ForMemory.Cache\ForMemory.Cache.csproj", "{7DB4BD4B-8D18-4B39-B994-799CA2183F4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForMemory.Cache", "ForMemory.Cache\ForMemory.Cache.csproj", "{7DB4BD4B-8D18-4B39-B994-799CA2183F4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

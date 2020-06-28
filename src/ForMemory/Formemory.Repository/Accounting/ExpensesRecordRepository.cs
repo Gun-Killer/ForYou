@@ -3,7 +3,7 @@ using ForMemory.Domain.Interfaces.Repositories.Accounting;
 using ForMemory.Dto.Accounting;
 using ForMemory.Entities.Accounting;
 
-namespace Formemory.Repository.Accounting
+namespace ForMemory.Repository.Accounting
 {
     public class ExpensesRecordRepository : BaseRepository<ExpensesRecordEntity>, IExpensesRecordRepository
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ForMemory.Entities.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Formemory.Repository
+namespace ForMemory.Repository
 {
     public abstract class BaseRepository<T>
     where T : class, IEntity

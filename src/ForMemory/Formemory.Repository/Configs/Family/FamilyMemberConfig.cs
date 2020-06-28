@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Formemory.Repository.Configs.Family
+namespace ForMemory.Repository.Configs.Family
 {
     public class FamilyMemberConfig : IEntityTypeConfiguration<FamilyMemberEntity>
     {

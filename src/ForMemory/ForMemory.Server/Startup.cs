@@ -1,6 +1,6 @@
 ﻿using ForMemory.Domain.Interfaces.Repositories.Family;
-using Formemory.Repository;
-using Formemory.Repository.Family;
+using ForMemory.Repository;
+using ForMemory.Repository.Family;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;

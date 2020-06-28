@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 
-namespace Formemory.Repository
+namespace ForMemory.Repository
 {
     public class MyDbContext : DbContext
     {

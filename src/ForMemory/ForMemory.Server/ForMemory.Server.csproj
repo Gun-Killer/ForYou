@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Formemory.Repository\Formemory.Repository.csproj" />
+    <ProjectReference Include="..\Formemory.Repository\ForMemory.Repository.csproj" />
   </ItemGroup>
 
 </Project>

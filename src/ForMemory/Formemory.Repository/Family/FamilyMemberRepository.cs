@@ -1,7 +1,7 @@
 ﻿using ForMemory.Domain.Interfaces.Repositories.Family;
 using ForMemory.Entities.Family;
 
-namespace Formemory.Repository.Family
+namespace ForMemory.Repository.Family
 {
     public class FamilyMemberRepository : BaseRepository<FamilyMemberEntity>, IFamilyMemberRepository
     {
