@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K8S", "K8S", "{F9689906-D99
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForMemory.Cache", "ForMemory.Cache\ForMemory.Cache.csproj", "{7DB4BD4B-8D18-4B39-B994-799CA2183F4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForMemory.Web", "ForMemory.Web\ForMemory.Web.csproj", "{BABCA5C2-BA67-43C0-AD79-64F557818E9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{7DB4BD4B-8D18-4B39-B994-799CA2183F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DB4BD4B-8D18-4B39-B994-799CA2183F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DB4BD4B-8D18-4B39-B994-799CA2183F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BABCA5C2-BA67-43C0-AD79-64F557818E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BABCA5C2-BA67-43C0-AD79-64F557818E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BABCA5C2-BA67-43C0-AD79-64F557818E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BABCA5C2-BA67-43C0-AD79-64F557818E9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{58ECACF4-1673-4F36-9A64-CD04F28AA0B4} = {94477350-F591-4F2E-96BF-EBF4BD31671F}
 		{F9689906-D998-4F6C-BBCA-6D437C32B0C7} = {94477350-F591-4F2E-96BF-EBF4BD31671F}
 		{7DB4BD4B-8D18-4B39-B994-799CA2183F4B} = {6EC24B6F-FECF-477D-95DF-1A0E4B644A52}
+		{BABCA5C2-BA67-43C0-AD79-64F557818E9E} = {94477350-F591-4F2E-96BF-EBF4BD31671F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9832A670-48C1-47EC-9CD2-E620E7C05D32}
