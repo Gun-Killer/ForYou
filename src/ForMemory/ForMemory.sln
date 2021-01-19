@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForMemory.Web", "ForMemory.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForMemory.Cache", "Cache\ForMemory.Cache\ForMemory.Cache.csproj", "{F2803A6F-CDBD-426D-8DE9-2107FA581B92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForMemory.Cache.MicrosoftMemoryCache", "Cache\ForMemory.Cache.MicrosoftMemoryCache\ForMemory.Cache.MicrosoftMemoryCache.csproj", "{9886AD31-3F3C-4E53-B64D-886BF4D8E179}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{F2803A6F-CDBD-426D-8DE9-2107FA581B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2803A6F-CDBD-426D-8DE9-2107FA581B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2803A6F-CDBD-426D-8DE9-2107FA581B92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9886AD31-3F3C-4E53-B64D-886BF4D8E179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9886AD31-3F3C-4E53-B64D-886BF4D8E179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9886AD31-3F3C-4E53-B64D-886BF4D8E179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9886AD31-3F3C-4E53-B64D-886BF4D8E179}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{F9689906-D998-4F6C-BBCA-6D437C32B0C7} = {94477350-F591-4F2E-96BF-EBF4BD31671F}
 		{BABCA5C2-BA67-43C0-AD79-64F557818E9E} = {94477350-F591-4F2E-96BF-EBF4BD31671F}
 		{F2803A6F-CDBD-426D-8DE9-2107FA581B92} = {6EC24B6F-FECF-477D-95DF-1A0E4B644A52}
+		{9886AD31-3F3C-4E53-B64D-886BF4D8E179} = {6EC24B6F-FECF-477D-95DF-1A0E4B644A52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9832A670-48C1-47EC-9CD2-E620E7C05D32}
