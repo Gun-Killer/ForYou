@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{94477350-F591-4F2E-96BF-EBF4BD31671F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B00F22D4-40F5-4A4E-BEEE-5786CB6784CB}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{14F228A6-2C48-4DEE-ADAC-7D1CC4C19DFB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForMemory.Server", "ForMemory.Server\ForMemory.Server.csproj", "{4756D24F-957B-4AF9-B8E5-680B2218CDD7}"
@@ -31,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K8S", "K8S", "{F9689906-D99
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForMemory.Cache", "ForMemory.Cache\ForMemory.Cache.csproj", "{7DB4BD4B-8D18-4B39-B994-799CA2183F4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForMemory.Web", "ForMemory.Web\ForMemory.Web.csproj", "{BABCA5C2-BA67-43C0-AD79-64F557818E9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForMemory.Web", "ForMemory.Web\ForMemory.Web.csproj", "{BABCA5C2-BA67-43C0-AD79-64F557818E9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

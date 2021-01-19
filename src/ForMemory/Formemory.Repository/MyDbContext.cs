@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
+﻿using ForMemory.Repository.Configs.Family;
 using Microsoft.EntityFrameworkCore;
 
 namespace ForMemory.Repository
@@ -17,17 +15,7 @@ namespace ForMemory.Repository
         /// <inheritdoc />
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var typesToRegister = Assembly.GetExecutingAssembly()
-                .GetTypes()
-                .Where(type => !string.IsNullOrEmpty(type.Namespace))
-                .Where(type => type.GetInterfaces().Any(t => t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IEntityTypeConfiguration<>)));
-
-            foreach (var type in typesToRegister)
-            {
-                dynamic configurationInstance = Activator.CreateInstance(type);
-                modelBuilder.ApplyConfiguration(configurationInstance);
-            }
-
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(FamilyConfig).Assembly);
             base.OnModelCreating(modelBuilder);
         }
     }
