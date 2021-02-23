@@ -4,6 +4,7 @@ using ForMemory.Repository;
 using ForMemory.Repository.Family;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +25,16 @@ namespace ForMemory.Server
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddControllers()
+            services.AddControllers(builder =>
+                {
+                    builder.AllowEmptyInputInBodyModelBinding = true;
+                    foreach (var formatter in builder.InputFormatters)
+                    {
+                        if (formatter.GetType() == typeof(SystemTextJsonInputFormatter))
+                            ((SystemTextJsonInputFormatter)formatter).SupportedMediaTypes.Add(
+                                Microsoft.Net.Http.Headers.MediaTypeHeaderValue.Parse("text/plain"));
+                    } 
+                })
                 .AddNewtonsoftJson();
 
             services.AddEntityFrameworkMySql();
