@@ -5,6 +5,10 @@ namespace AddTwoNumbers
 {
     class Program
     {
+        /// <summary>
+        /// https://leetcode.com/problems/add-two-numbers/
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             var l1 = Create(new[] { 2, 4, 9 });
@@ -16,61 +20,38 @@ namespace AddTwoNumbers
 
         public static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
-            List<ListNode> cahe1 = new List<ListNode>();
-            ListNode next = l1;
-            do
+            ListNode res = null;
+            ListNode next = null;
+            var l1Nex = l1;
+            var l2Nex = l2;
+            var pre = 0;
+            while (l1Nex != null || l2Nex != null || pre != 0)
             {
-                cahe1.Add(new ListNode(next.val));
-                next = next.next;
-            } while (next != null);
-
-            List<ListNode> cahe2 = new List<ListNode>();
-            next = l2;
-            do
-            {
-                cahe2.Add(new ListNode(next.val));
-                next = next.next;
-            } while (next != null);
-
-            var len = Math.Max(cahe1.Count, cahe2.Count);
-            var mid = 0;
-            List<ListNode> nodes = new List<ListNode>();
-            for (int i = 0; i < len; i++)
-            {
-                var sum = (cahe1.Count > i ? cahe1[i].val : 0) +
-                          (cahe2.Count > i ? cahe2[i].val : 0) +
-                          mid;
+                var sum = (l1Nex?.val ?? 0) + (l2Nex?.val ?? 0) + pre;
                 if (sum > 9)
                 {
                     sum = sum - 10;
-                    mid = 1;
+                    pre = 1;
                 }
                 else
                 {
-                    mid = 0;
+                    pre = 0;
                 }
-                nodes.Add(new ListNode(sum));
-            }
 
-            if (mid > 0)
-            {
-                nodes.Add(new ListNode(mid));
-            }
-
-            var res = new ListNode();
-            var cacheNex = res;
-            for (int i = 0; i < nodes.Count; i++)
-            {
-                cacheNex.val = nodes[i].val;
-                if (i < (nodes.Count - 1))
+                if (next == null)
                 {
-                    cacheNex.next = new ListNode();
-                    cacheNex = cacheNex.next;
+                    res = new ListNode(sum, null);
+                    next = res;
                 }
                 else
                 {
-                    cacheNex.next = null;
+                    next.next = new ListNode(sum, null);
+                    next = next.next;
                 }
+
+
+                l1Nex = l1Nex?.next;
+                l2Nex = l2Nex?.next;
             }
 
             return res;
