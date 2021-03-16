@@ -43,7 +43,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Network", "Network", "{D595
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForMemory.Network.Sockets", "Network\ForMemory.Network.Sockets\ForMemory.Network.Sockets.csproj", "{2AFB0AE3-C2B6-49A8-9415-75730FA0CB3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForMemory.Network.SocketsTest", "Network\ForMemory.Network.SocketsTest\ForMemory.Network.SocketsTest.csproj", "{D45FE703-8135-4579-AD32-D88DB0135C04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForMemory.Network.SocketsTest", "Network\ForMemory.Network.SocketsTest\ForMemory.Network.SocketsTest.csproj", "{D45FE703-8135-4579-AD32-D88DB0135C04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{18D68050-AE05-456B-950F-1682F896A420}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForMemory.Common", "Common\ForMemory.Common\ForMemory.Common.csproj", "{941E7E1A-8BF6-428E-9859-6401F444FA0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +111,10 @@ Global
 		{D45FE703-8135-4579-AD32-D88DB0135C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D45FE703-8135-4579-AD32-D88DB0135C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D45FE703-8135-4579-AD32-D88DB0135C04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{941E7E1A-8BF6-428E-9859-6401F444FA0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{941E7E1A-8BF6-428E-9859-6401F444FA0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{941E7E1A-8BF6-428E-9859-6401F444FA0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{941E7E1A-8BF6-428E-9859-6401F444FA0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -131,6 +139,8 @@ Global
 		{D59577BA-0D51-4751-929F-ECF9DFEE53A1} = {94477350-F591-4F2E-96BF-EBF4BD31671F}
 		{2AFB0AE3-C2B6-49A8-9415-75730FA0CB3E} = {D59577BA-0D51-4751-929F-ECF9DFEE53A1}
 		{D45FE703-8135-4579-AD32-D88DB0135C04} = {D59577BA-0D51-4751-929F-ECF9DFEE53A1}
+		{18D68050-AE05-456B-950F-1682F896A420} = {94477350-F591-4F2E-96BF-EBF4BD31671F}
+		{941E7E1A-8BF6-428E-9859-6401F444FA0D} = {18D68050-AE05-456B-950F-1682F896A420}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9832A670-48C1-47EC-9CD2-E620E7C05D32}
